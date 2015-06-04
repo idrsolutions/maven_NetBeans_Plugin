@@ -1,0 +1,29 @@
+Manifest-Version: 1.0
+OpenIDE-Module-Layer: org/jpedal/netbeans/layer.xml
+OpenIDE-Module-Localizing-Bundle: org/jpedal/netbeans/Bundle.propertie
+ s
+OpenIDE-Module-Specification-Version: 1.0
+OpenIDE-Module-Implementation-Version: 1.0-20150604
+OpenIDE-Module-Build-Version: 201506040711
+OpenIDE-Module: org.jpedal.NetBeansPDFViewer
+OpenIDE-Module-Public-Packages: -
+OpenIDE-Module-Requires: org.openide.modules.ModuleFormat1
+OpenIDE-Module-Display-Category: org.jpedal
+OpenIDE-Module-Name: NetBeansPDFViewer
+OpenIDE-Module-Short-Description: <undefined>
+OpenIDE-Module-Long-Description: <undefined>
+X-Class-Path: ext/org.jpedal.NetBeansPDFViewer/org-jpedal/OpenViewerFX
+ .jar ext/org.jpedal.NetBeansPDFViewer/org-eclipse-birt-runtime-3_7_1/
+ org.mozilla.javascript.jar ext/org.jpedal.NetBeansPDFViewer/bouncycas
+ tle/bcmail-jdk16.jar ext/org.jpedal.NetBeansPDFViewer/bouncycastle/bc
+ prov-jdk16.jar
+Maven-Class-Path: org.jpedal:OpenViewerFX:6.1.28 org.eclipse.birt.runt
+ ime.3_7_1:org.mozilla.javascript:1.7.2 bouncycastle:bcmail-jdk16:140 
+ bouncycastle:bcprov-jdk16:140
+OpenIDE-Module-Module-Dependencies: org.netbeans.api.annotations.commo
+ n/1 > 1.23.1, org.openide.windows > 6.70.1, org.openide.filesystems >
+  8.10.1, org.openide.util > 8.37.1, org.openide.dialogs > 7.36.1, org
+ .openide.util.lookup > 8.24.1, org.openide.awt > 7.61.1, org.netbeans
+ .core.multiview/1 > 1.39.1, org.openide.loaders > 7.56.2, org.netbean
+ s.modules.settings/1 > 1.44.1
+

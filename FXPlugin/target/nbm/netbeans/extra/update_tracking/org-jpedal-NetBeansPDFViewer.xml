@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?><module codename="org.jpedal.NetBeansPDFViewer">
+    <module_version install_time="1433401861757" last="true" origin="installer" specification_version="1.0">
+        <file crc="1675438720" name="config/Modules/org-jpedal-NetBeansPDFViewer.xml"/>
+        <file crc="2048621919" name="modules/ext/org.jpedal.NetBeansPDFViewer/bouncycastle/bcmail-jdk16.jar"/>
+        <file crc="1946280797" name="modules/ext/org.jpedal.NetBeansPDFViewer/bouncycastle/bcprov-jdk16.jar"/>
+        <file crc="209367428" name="modules/ext/org.jpedal.NetBeansPDFViewer/org-eclipse-birt-runtime-3_7_1/org.mozilla.javascript.jar"/>
+        <file crc="3354852646" name="modules/ext/org.jpedal.NetBeansPDFViewer/org-jpedal/OpenViewerFX.jar"/>
+        <file crc="541857961" name="modules/org-jpedal-NetBeansPDFViewer.jar"/>
+    </module_version>
+</module>
