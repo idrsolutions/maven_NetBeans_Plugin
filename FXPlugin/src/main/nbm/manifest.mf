@@ -1,4 +1,0 @@
-Manifest-Version: 1.0
-OpenIDE-Module-Layer: org/jpedal/netbeans/layer.xml
-OpenIDE-Module-Localizing-Bundle: org/jpedal/netbeans/Bundle.properties
-
