@@ -5,6 +5,7 @@
     <artifactId>NetBeansPDFviewer</artifactId>
     <version>1.0-SNAPSHOT</version>
     <packaging>nbm</packaging>
+   
     <build>
         <plugins>
             <plugin>
@@ -56,7 +57,7 @@
         <dependency>
             <groupId>org.jpedal</groupId>
             <artifactId>OpenViewerFX</artifactId>
-            <version>6.1.28</version>
+            <version>6.2.25</version>
             <scope>compile</scope>
         </dependency>
         <dependency>
