@@ -28,6 +28,12 @@
                 <version>2.4</version>
                 <configuration>
                     <useDefaultManifestFile>true</useDefaultManifestFile>
+                    <archive>
+                        <manifestEntries>
+                            <Built-By>IDRSolutions</Built-By>
+                        </manifestEntries>
+
+                    </archive>
                 </configuration>
             </plugin>
         </plugins>
@@ -41,7 +47,7 @@
                 <enabled>false</enabled>
             </snapshots>
         </repository>
-           <repository>
+        <repository>
             <id>git-IDRSolutions</id>
             <name>IDRSolutions Git based repo</name>
             <url>https://github.com/IDRSolutions/maven_OpenViewerFX_repository/raw/master/</url>
@@ -50,13 +56,13 @@
     <dependencies>
         <dependency>
             <groupId>org.netbeans.api</groupId>
-            <artifactId>org-netbeans-api-annotations-common</artifactId>
+            <version>6.6.11</version>
             <version>RELEASE80</version>
         </dependency>
         <dependency>
             <groupId>org.jpedal</groupId>
             <artifactId>OpenViewerFX</artifactId>
-            <version>6.2.25</version>
+            <version>6.3.31</version>
             <scope>compile</scope>
         </dependency>
         <dependency>
@@ -114,6 +120,13 @@
             <type>jar</type>
         </dependency>
     </dependencies>
+    <distributionManagement>
+         <repository>
+        <id>internal.repo</id>
+        <name>Temporary Staging Repository</name>
+        <url>file://${project.build.directory}/mvn-repo</url>
+        </repository>
+    </distributionManagement>
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
