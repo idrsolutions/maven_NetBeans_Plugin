@@ -23,12 +23,12 @@ import org.openide.windows.TopComponent;
 )
 
 @ActionReferences({
-    @ActionReference(path = "Menu/File/PDF Viewer", position = 1075, separatorBefore = 1025, separatorAfter = 1125),
-    @ActionReference(path = "Menu/Window/PDF Viewer", position = 1075, separatorBefore = 1025, separatorAfter = 1125),
+    @ActionReference(path = "Menu/File", position = 1075, separatorBefore = 1025, separatorAfter = 1125),
+    @ActionReference(path = "Menu/Window", position = 1075, separatorBefore = 1025, separatorAfter = 1125),
     @ActionReference(path = "Editors/text/x-java/Popup/PDFiewer Options")
 })
 
-@Messages("CTL_PDFViewerAction=Base ViewerFX")
+@Messages("CTL_PDFViewerAction=PDF Viewer")
 public final class PDFViewerAction implements ActionListener {
 
     @Override
@@ -36,7 +36,7 @@ public final class PDFViewerAction implements ActionListener {
 
         TopComponent tc;
         //this gives me a new window each time
-                tc=new PDFDisplayTopComponent(PDFViewerTypes.BASE_VIEWERFX);
+                tc=new PDFDisplayTopComponent();
 
         tc.open();
         tc.requestActive();

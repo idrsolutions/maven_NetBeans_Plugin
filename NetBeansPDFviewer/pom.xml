@@ -56,13 +56,13 @@
     <dependencies>
         <dependency>
             <groupId>org.netbeans.api</groupId>
-            <version>6.6.11</version>
+            <version>6.6.16</version>
             <version>RELEASE80</version>
         </dependency>
         <dependency>
             <groupId>org.jpedal</groupId>
             <artifactId>OpenViewerFX</artifactId>
-            <version>6.3.31</version>
+            <version>6.6.14</version>
             <scope>compile</scope>
         </dependency>
         <dependency>
@@ -131,4 +131,5 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
     <name>NetBeansPDFviewer</name>
+    <description>PDF viewer for NetBeans - adds a PDFTopComponent which can render PDF files in JavaFX</description>
 </project>

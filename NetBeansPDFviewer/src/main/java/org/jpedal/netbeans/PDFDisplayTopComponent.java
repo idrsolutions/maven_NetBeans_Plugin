@@ -6,30 +6,18 @@
 package org.jpedal.netbeans;
 
 import java.awt.BorderLayout;
-import java.net.URL;
-import java.nio.file.Files;
-import java.nio.file.StandardCopyOption;
 import java.util.Properties;
 import javafx.application.Platform;
-import javafx.beans.value.ChangeListener;
-import javafx.beans.value.ObservableValue;
 import javafx.embed.swing.JFXPanel;
 import javafx.scene.Scene;
-import javafx.scene.layout.Pane;
 import javax.swing.SwingUtilities;
 import org.jpedal.examples.baseviewer.BaseViewerFX;
-import org.jpedal.examples.viewer.Commands;
-import org.jpedal.examples.viewer.JavaFXCommands;
-import org.jpedal.examples.viewer.OpenViewerFX;
-import org.jpedal.external.Options;
 import org.jpedal.external.PluginHandler;
 import org.netbeans.api.settings.ConvertAsProperties;
 import org.openide.awt.ActionID;
 import org.openide.util.Exceptions;
 import org.openide.util.NbBundle.Messages;
 import org.openide.windows.TopComponent;
-import java.io.File;
-import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 
 /**
@@ -60,16 +48,9 @@ public final class PDFDisplayTopComponent extends TopComponent {
 
     BaseViewerFX viewer;
 
-    //if you use the commerical jar, you will need to change this to ViewerFX.
-    OpenViewerFX fullViewer;
-
     String PDFfile=null;
 
     JFXPanel fxPanel = new JFXPanel();
-
-    private PDFViewerTypes viewerType =PDFViewerTypes.BASE_VIEWERFX;
-    
-    private String propertiesFile=null;
 
     public PDFDisplayTopComponent() {
 
@@ -79,37 +60,17 @@ public final class PDFDisplayTopComponent extends TopComponent {
         putClientProperty(TopComponent.PROP_UNDOCKING_DISABLED, Boolean.TRUE);
 
     }
-    public PDFDisplayTopComponent(PDFViewerTypes viewerType) {
+    
+    public PDFDisplayTopComponent(String file){
 
         this();
 
-        if(viewerType!=null){
-            this.viewerType=viewerType;
-        }
-
-    }
-
-    public PDFDisplayTopComponent(String file, PDFViewerTypes viewerType){
-
-        this(viewerType);
-
         PDFfile = file;
 
         this.setDisplayName(file);
 
     }
 
-    public PDFDisplayTopComponent(String file, String properties, PDFViewerTypes viewerType){
-
-        this(viewerType);
-
-        PDFfile = file;
-        
-        this.propertiesFile=properties;
-
-        this.setDisplayName(file);
-
-    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -131,24 +92,35 @@ public final class PDFDisplayTopComponent extends TopComponent {
     }// </editor-fold>                        
 
     // Variables declaration - do not modify                     
-    // End of variables declaration                   
-    @Override
+    // End of variables declaration  
+     @Override
     public void componentOpened() {
+        
+    }
+    
+    boolean isSetup=false;
+    
+    @Override
+    public void componentActivated() {
 
-        this.setLayout(new BorderLayout());
-        this.add(fxPanel, BorderLayout.CENTER);
+        if(!isSetup){
+            isSetup=true;
+        
+            this.setLayout(new BorderLayout());
+            this.add(fxPanel, BorderLayout.CENTER);
 
-        Platform.setImplicitExit(false);
-        Platform.runLater(new Runnable() {
-            @Override
-            public void run() {
-                try {
-                    initFX();
-                } catch (FileNotFoundException ex) {
-                    Exceptions.printStackTrace(ex);
-                }
-                }
-        });
+            Platform.setImplicitExit(false);
+            Platform.runLater(new Runnable() {
+                @Override
+                public void run() {
+                    try {
+                        initFX();
+                    } catch (FileNotFoundException ex) {
+                        Exceptions.printStackTrace(ex);
+                    }
+                    }
+            });
+        }
     }
 
     private void initFX() throws FileNotFoundException {
@@ -160,87 +132,26 @@ public final class PDFDisplayTopComponent extends TopComponent {
             PDFfile=newPDFfile;
         }
 
-        if (viewerType.equals(PDFViewerTypes.EXTERNAL_OPENVIEWERFX) || viewerType.equals(PDFViewerTypes.INTERNAL_OPENVIWERFX)) { //Use  OpenViewerFX 
+        viewer = new BaseViewerFX();
 
-            //Root pane which holds JavaFX PDF Viewer
-            Pane viewerPane = new Pane();
+        Scene scene = viewer.setupViewer(this.getBounds().width, this.getBounds().height);
 
-            fullViewer = new OpenViewerFX(viewerPane, null);
-            if(propertiesFile!=null){
-                fullViewer.loadProperties(new FileInputStream(propertiesFile));
-            }
-            fullViewer.setupViewer();
-            Scene scene = new Scene(viewerPane);
+        viewer.addListeners();
 
-            fullViewer.addExternalHandler(new PluginCallBackHandler(this),Options.PluginHandler);
+        fxPanel.setScene(scene);
 
-            scene.widthProperty().addListener(new ChangeListener<Number>() {
-                @Override
-                public void changed(ObservableValue<? extends Number> observableValue, Number oldSceneWidth, Number newSceneWidth) {
+        if(PDFfile!=null){
 
-                fullViewer.getRoot().setMinWidth(newSceneWidth.doubleValue());
-
-                }
-            });
-            scene.heightProperty().addListener(new ChangeListener<Number>() {
-                @Override
-                public void changed(ObservableValue<? extends Number> observableValue, Number oldSceneHeight, Number newSceneHeight) {
-
-                fullViewer.getRoot().setMinHeight(newSceneHeight.doubleValue());                                
-
-                }
-            });
-
-            fullViewer.getRoot().setMaxSize(scene.widthProperty().doubleValue(), scene.heightProperty().doubleValue());
-
-            fxPanel.setScene(scene);
-            
-             //Open the PDF File in the Plugin Window.
-            if (PDFfile != null && PDFfile.startsWith("http")) {
-
-                String tmpDir = System.getProperty("java.io.tmpdir");
-              
-                String fileName=PDFfile.substring(1+PDFfile.lastIndexOf("/"));
-               
-                String fullPath=tmpDir+fileName;
-                
-                //see if already stored in TmpDir and cache if not
-                File testFile=new File(fullPath);
-                if(!testFile.exists()){
-                    //copy from http to file                
-                     try {
-                        URL url = new URL(PDFfile);
-                        Files.copy(url.openStream(), new File(fullPath).toPath(),
-                                StandardCopyOption.REPLACE_EXISTING);
-                    } catch (Exception e) {
-                    }
-                }
-
-                fullViewer.executeCommand(Commands.OPENFILE, new String[]{fullPath});
-            }else if (PDFfile != null) { //If the plugin state is still active load and write PDF
-                fullViewer.executeCommand(Commands.OPENFILE, new String[]{PDFfile});
-            }
-            }else if (PDFfile != null) { //If the plugin state is still active load and write PDF
-                fullViewer.executeCommand(Commands.OPENFILE, new String[]{PDFfile});
-            
-        } else { //Use BaseViewer
-            viewer = new BaseViewerFX();
-
-            Scene scene = viewer.setupViewer(this.getBounds().width, this.getBounds().height);
-
-            viewer.addListeners();
-
-            fxPanel.setScene(scene);
-
-            if(PDFfile!=null){
-
-                try {
-                    viewer.loadPDF(PDFfile);
-                } catch (Exception ex) {
-                    Exceptions.printStackTrace(ex);
-                }
+            try {
+                viewer.loadPDF(PDFfile);
+            } catch (Exception ex) {
+                Exceptions.printStackTrace(ex);
             }
         }
+        
+        //allow update of page title as PDF file
+        viewer.addExternalHandler(new PluginCallBackHandler(this));
+
     }
 
     @Override
@@ -255,20 +166,14 @@ public final class PDFDisplayTopComponent extends TopComponent {
     void writeProperties(Properties p) {
         // better to version settings since initial version as advocated at
         // http://wiki.apidesign.org/wiki/PropertyFiles
-        p.setProperty("version", "1.0");
+        p.setProperty("version", "1.1");
         // TODO store your settings
 
         //Save the PDF path to property value "file"
-        if (viewerType.equals(PDFViewerTypes.EXTERNAL_OPENVIEWERFX) || viewerType.equals(PDFViewerTypes.INTERNAL_OPENVIWERFX)) {
-            String filename=fullViewer.executeCommand(JavaFXCommands.GETPDFNAME, null).toString();
-            if(filename!=null){
-                p.setProperty("file", filename);
-            }
-        } else {
-            p.setProperty("file", viewer.getPDFfilename());
+        if(this.getDisplayName()!=null){
+            p.setProperty("file", this.getDisplayName());
         }
-
-        p.setProperty("viewerType", viewerType.toString());
+        
     }
 
     /**
@@ -289,15 +194,6 @@ public final class PDFDisplayTopComponent extends TopComponent {
 
             this.setDisplayName(PDFfile);
         }
-
-        /**
-         * restore viewer type to use
-         */
-        String viewerTypeStr = p.getProperty("viewerType");
-
-        if(viewerTypeStr!=null){
-            viewerType=PDFViewerTypes.valueOf(viewerTypeStr);
-        }
     }
 
     public class PluginCallBackHandler implements PluginHandler  {
@@ -311,22 +207,20 @@ public final class PDFDisplayTopComponent extends TopComponent {
         @Override
         public void setFileName(final String string) {
 
-            fullViewer.getRoot().setMinSize(handler.getBounds().width, handler.getBounds().height); //Set minimum size of JavaFX Viewer root container
-
-            fullViewer.executeCommand(Commands.SCALING, new String[]{"Fit Page"});
-             
             if (SwingUtilities.isEventDispatchThread()){ //remember this is Swing and not FX
                 handler.setName(string);
+                handler.setDisplayName(string);
             }else {
                 final Runnable doPaintComponent = new Runnable() {
                     @Override
                     public void run() {
                         handler.setName(string);
+                        handler.setDisplayName(string);
                     }
                 };
                 SwingUtilities.invokeLater(doPaintComponent);
             }
-
+           
         }
     }
 }

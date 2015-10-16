@@ -30,7 +30,7 @@ public final class OracleGuideAction implements ActionListener {
         TopComponent tc;
         //this gives me a new window each time
        // tc = new PDFDisplayTopComponent("http://docs.oracle.com/cd/E50453_01/doc.80/e50452.pdf", "C:\\Users\\Sylwia\\Desktop\\OracleDoc.xml",PDFViewerTypes.INTERNAL_OPENVIWERFX);
-        tc = new PDFDisplayTopComponent("http://docs.oracle.com/cd/E50453_01/doc.80/e50452.pdf", PDFViewerTypes.INTERNAL_OPENVIWERFX);
+        tc = new PDFDisplayTopComponent("http://docs.oracle.com/cd/E50453_01/doc.80/e50452.pdf");
 
         tc.open();
         tc.requestActive();
