@@ -3,7 +3,7 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>org.jpedal</groupId>
     <artifactId>NetBeansPDFviewer</artifactId>
-    <version>1.0-SNAPSHOT</version>
+    <version>20151016</version>
     <packaging>nbm</packaging>
     <build>
         <plugins>
@@ -56,13 +56,13 @@
     <dependencies>
         <dependency>
             <groupId>org.netbeans.api</groupId>
-            <version>6.6.16</version>
+            <version>6.7.25</version>
             <version>RELEASE80</version>
         </dependency>
         <dependency>
             <groupId>org.jpedal</groupId>
             <artifactId>OpenViewerFX</artifactId>
-            <version>6.6.14</version>
+            <version>6.6.16</version>
             <scope>compile</scope>
         </dependency>
         <dependency>
@@ -131,5 +131,5 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
     <name>NetBeansPDFviewer</name>
-    <description>PDF viewer for NetBeans - adds a PDFTopComponent which can render PDF files in JavaFX</description>
+    <description>PDF viewer for NetBeans - adds a PDFTopComponent which can render PDF files in JavaFX (LGPL license)</description>
 </project>
