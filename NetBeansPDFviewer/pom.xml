@@ -56,7 +56,7 @@
     <dependencies>
         <dependency>
             <groupId>org.netbeans.api</groupId>
-            <version>6.22</version>
+            <version>6.23</version>
             <version>RELEASE80</version>
         </dependency>
         <dependency>
