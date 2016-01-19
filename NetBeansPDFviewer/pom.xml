@@ -55,11 +55,6 @@
     </repositories>
     <dependencies>
         <dependency>
-            <groupId>org.netbeans.api</groupId>
-            <version>6.8.22</version>
-            <version>RELEASE80</version>
-        </dependency>
-        <dependency>
             <groupId>org.jpedal</groupId>
             <artifactId>OpenViewerFX</artifactId>
             <version>6.6.16</version>
