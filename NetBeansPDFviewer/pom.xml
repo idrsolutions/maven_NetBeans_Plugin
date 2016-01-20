@@ -50,14 +50,14 @@
         <repository>
             <id>git-IDRSolutions</id>
             <name>IDRSolutions Git based repo</name>
-            <url>https://github.com/IDRSolutions/maven_OpenViewerFX_repository/raw/master/</url>
+            <url>https://github.com/IDRSolutions/maven_OpenViewerFX-src/raw/master/</url>
         </repository>
     </repositories>
     <dependencies>
         <dependency>
             <groupId>org.jpedal</groupId>
             <artifactId>OpenViewerFX</artifactId>
-            <version>6.6.16</version>
+            <version>6.8.22</version>
             <scope>compile</scope>
         </dependency>
         <dependency>
