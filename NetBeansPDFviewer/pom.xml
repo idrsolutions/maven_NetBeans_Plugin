@@ -8,12 +8,6 @@
     <build>
         <plugins>
             <plugin>
-                <groupId>org.codehaus.mojo</groupId>
-                <artifactId>nbm-maven-plugin</artifactId>
-                <version>3.13</version>
-                <extensions>true</extensions>
-            </plugin>
-            <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
                 <version>2.5.1</version>
@@ -34,6 +28,22 @@
                         </manifestEntries>
 
                     </archive>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+               <artifactId>nbm-maven-plugin</artifactId>
+               <version>3.11.1</version>
+               <extensions>true</extensions>
+                <configuration>
+                    <!-- keep it for backwards compatibility to previous versions-->
+                    <codeNameBase>org.jpedal.NetBeansPDFviewer</codeNameBase>
+                    <licenseFile>LICENSE-2.0.txt</licenseFile>
+                    <author>Mark Stephens (markstephens@idrsolutions.com)</author>
+                    <homePageUrl>https://github.com/IDRSolutions/maven-OpenViewerFX-src</homePageUrl>
+                    <keystore>nbproject/private/keystore</keystore>
+                    <keystorealias>myself</keystorealias>
+                    <licenseName>GNU Lesser General Public License version 2.1</licenseName>
                 </configuration>
             </plugin>
         </plugins>
