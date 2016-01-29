@@ -1,3 +1,3 @@
-This code is copyright IDRsolutions. It may be freely distributed but without any warranty or support.
+This code is copyright IDRsolutions. It may be freely distributed under LGPL license but without any warranty or support.
 
-IDRsolutions 2014
+IDRsolutions 2016
