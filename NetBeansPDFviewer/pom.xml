@@ -38,12 +38,12 @@
                 <configuration>
                     <!-- keep it for backwards compatibility to previous versions-->
                     <codeNameBase>org.jpedal.NetBeansPDFviewer</codeNameBase>
-                    <licenseFile>LICENSE-2.0.txt</licenseFile>
                     <author>Mark Stephens (markstephens@idrsolutions.com)</author>
                     <homePageUrl>https://github.com/IDRSolutions/maven-OpenViewerFX-src</homePageUrl>
-                    <keystore>nbproject/private/keystore</keystore>
+                    <keystore>keystore</keystore>
                     <keystorealias>myself</keystorealias>
                     <licenseName>GNU Lesser General Public License version 2.1</licenseName>
+                    <licenseFile>license.txt</licenseFile>
                 </configuration>
             </plugin>
         </plugins>
