@@ -3,7 +3,7 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>org.jpedal</groupId>
     <artifactId>NetBeansPDFviewer</artifactId>
-    <version>20161031</version>
+    <version>20161128</version>
     <packaging>nbm</packaging>
     <build>
         <plugins>
@@ -67,7 +67,7 @@
         <dependency>
             <groupId>org.jpedal</groupId>
             <artifactId>OpenViewerFX</artifactId>
-            <version>7.6.27</version>
+            <version>7.7.25</version>
             <scope>compile</scope>
         </dependency>
         <dependency>
