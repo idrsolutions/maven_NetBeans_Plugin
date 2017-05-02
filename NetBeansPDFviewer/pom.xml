@@ -3,7 +3,7 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>org.jpedal</groupId>
     <artifactId>NetBeansPDFviewer</artifactId>
-    <version>20170402</version>
+    <version>20170502</version>
     <packaging>nbm</packaging>
     <build>
         <plugins>
