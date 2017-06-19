@@ -1,7 +1,7 @@
 # Maven NetBeans Plugin
 
 <h3>Description</h3>
-The NetBeans PDF Viewer plugin is a PDF viewer written in JavaFX for NetBeans to provide a native Java PDF viewer inside NetBeans using the Open Source OpenViewerFX Maven project from IDRsolutions. <br><br>
+The NetBeans plugin provides a native Java support for viewing PDF files inside NetBeans IDR and platform using the Open Source OpenViewerFX Maven project from IDRsolutions. <br><br>
 
 <h3>LGPL TERMS AND CONDITIONS FOR COPYING, DISTRIBUTION AND MODIFICATION</h3>
 <ol>
