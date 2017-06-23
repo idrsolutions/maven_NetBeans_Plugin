@@ -3,7 +3,7 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>org.jpedal</groupId>
     <artifactId>NetBeansPDFviewer</artifactId>
-    <version>20170502</version>
+    <version>20170623</version>
     <packaging>nbm</packaging>
     <build>
         <plugins>
@@ -39,7 +39,7 @@
                     <!-- keep it for backwards compatibility to previous versions-->
                     <codeNameBase>org.jpedal.NetBeansPDFviewer</codeNameBase>
                     <author>Mark Stephens (markstephens@idrsolutions.com)</author>
-                    <homePageUrl>https://github.com/IDRSolutions/maven-OpenViewerFX-src</homePageUrl>
+                    <homePageUrl>https://github.com/IDRSolutions/</homePageUrl>
                     <keystore>keystore</keystore>
                     <keystorealias>myself</keystorealias>
                     <licenseFile>license.txt</licenseFile>
@@ -67,7 +67,7 @@
         <dependency>
             <groupId>org.jpedal</groupId>
             <artifactId>OpenViewerFX</artifactId>
-            <version>7.12.28</version>
+            <version>7.14.23</version>
             <scope>compile</scope>
         </dependency>
         <dependency>
