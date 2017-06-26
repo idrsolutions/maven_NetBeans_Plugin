@@ -4,7 +4,6 @@ package org.jpedal.netbeans;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JOptionPane;
-import org.jpedal.utils.JavaFXHelper;
 import org.openide.awt.ActionID;
 import org.openide.awt.ActionReference;
 import org.openide.awt.ActionRegistration;
@@ -32,24 +31,18 @@ public final class PDFOpenAction implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent ev) {
-        boolean isFXAvailable=JavaFXHelper.isJavaFXAvailable();
-        
-        if(isFXAvailable){
             
-            String path="";
-            // Get the path of the PDF
-            if(context != null){
-                FileObject f = context.getPrimaryFile();
-                path = FileUtil.toFile(f).getPath();
-            }
-            
-            //this gives me a new window each time
-            TopComponent tc=new PDFDisplayTopComponent(path);
-            tc.open();
-            tc.requestActive();
-            
-        }else{
-            JOptionPane.showMessageDialog(null, "JavaFX is not available");
+        String path="";
+        // Get the path of the PDF
+        if(context != null){
+            FileObject f = context.getPrimaryFile();
+            path = FileUtil.toFile(f).getPath();
         }
+
+        //this gives me a new window each time
+        TopComponent tc=new PDFDisplayTopComponent(path);
+        tc.open();
+        tc.requestActive();
+        
     }
 }
