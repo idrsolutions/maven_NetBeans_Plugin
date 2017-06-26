@@ -3,7 +3,7 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>org.jpedal</groupId>
     <artifactId>NetBeansPDFviewer</artifactId>
-    <version>20170623</version>
+    <version>1.0-SNAPSHOT</version>
     <packaging>nbm</packaging>
     <build>
         <plugins>
@@ -65,10 +65,10 @@
     </repositories>
     <dependencies>
         <dependency>
-            <groupId>org.jpedal</groupId>
+            <groupId>com.idrsolutions</groupId>
             <artifactId>OpenViewerFX</artifactId>
             <version>7.14.23</version>
-            <scope>compile</scope>
+            <type>jar</type>
         </dependency>
         <dependency>
             <groupId>org.netbeans.api</groupId>
