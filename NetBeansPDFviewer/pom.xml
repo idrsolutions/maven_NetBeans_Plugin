@@ -57,11 +57,6 @@
                 <enabled>false</enabled>
             </snapshots>
         </repository>
-        <repository>
-            <id>git-IDRSolutions</id>
-            <name>IDRSolutions Git based repo</name>
-            <url>https://github.com/IDRSolutions/maven_OpenViewerFX-src/raw/master/</url>
-        </repository>
     </repositories>
     <dependencies>
         <dependency>
